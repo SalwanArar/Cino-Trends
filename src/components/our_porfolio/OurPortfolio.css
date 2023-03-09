@@ -1,0 +1,14 @@
+section {
+    padding: 0;
+    margin: 0;
+}
+.m--portfolio {
+    padding: 3rem;
+    margin: 0;
+    /* height: 500px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    /* background-color: aqua; */
+}

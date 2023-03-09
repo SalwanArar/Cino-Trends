@@ -1,0 +1,177 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+    /* font-size: 6px; */
+    margin: 0;
+    padding: 0;
+}
+
+
+
+header {
+    display: flex;
+    position: relative;
+    background-color: var(--secondaryColor);
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    transition: all .5s;
+}
+
+.logo-conainer {
+    margin-top: 2rem;
+    margin-left: 2rem;
+    margin-bottom: auto;
+}
+
+.logo-conainer img {
+    height: 12rem;
+}
+
+.header-nav{
+    width: 100%;
+    position: absolute;
+}
+
+.header-nav.expanded  {
+    height: 100vh;
+}
+ 
+.header-links {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+    list-style-type: none;
+    overflow: hidden;
+}
+
+
+.header-links li a {
+    color: var(--primaryColor);
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: .1rem;
+}
+
+.header-links.expanded{
+    flex-direction: column;
+    height: 100vh;
+}
+
+
+.header-links.expanded li a {
+    display: inline;
+}
+
+.header-links.expanded li:nth-child(1) {
+    order: 2;
+}
+
+.header-links.expanded li:nth-child(2) {
+    order: 3;
+}
+
+.header-links.expanded li:nth-child(3) {
+    order: 4;
+}
+
+.header-links.expanded li:nth-child(4) {
+    order: 1;
+}
+
+.header-links.expanded li:nth-child(5) {
+    order: 5;
+}
+
+.header-links.expanded li:nth-child(6) {
+    order: 6;
+}
+
+.header-links.expanded li:nth-child(7) {
+    order: 7;
+}
+
+.header-links li input {
+    height: 8rem;
+    transition: all .8s;
+    transform: rotate(0);
+}
+
+.header-links.expanded li input {
+    transition: all .8s;
+    transform: rotate(90deg);
+    position: absolute;
+    top: 4rem;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media screen and (max-width: 1024px) {
+    .header-links li a {
+        display: none;
+    }
+    
+}
+
+@media screen and (max-width: 480px) {
+    header {
+        justify-content: space-between;
+    }
+
+    .header-nav {
+        position: relative;
+        width: auto;
+    }
+
+    .header-nav.expanded {
+        position: absolute;
+        width: 100vw;
+    }
+
+    .header-links.expanded li input {
+        margin-right: 7rem;
+    }
+}
+
+
+
+@media screen and (min-width: 320px) {
+    header {
+      font-size: 6px;
+    }
+  }
+  
+  
+  @media screen and (min-width: 480px) {
+    header {
+      font-size: 8px;
+    }
+  }
+  
+  @media screen and (min-width: 768px) {
+    header {
+      font-size: 10px;
+    }
+  }
+  
+  @media screen and (min-width: 1024px) {
+    header {
+      font-size: 10px;
+    }
+  }
+  
+  @media screen and (min-width: 1200px) {
+    header {
+      font-size: 10px;
+    }
+  }
+  
+  @media screen and (min-width: 1600px) {
+    header {
+      font-size: 12px;
+    }
+  }
