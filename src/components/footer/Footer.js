@@ -19,12 +19,21 @@ function Footer () {
     // </h1>);
   return (
     <footer style={{
-        background: 'blue'
+        background: '#090F24',
+        padding: '4rem'
     }}>
         <Grid container spacing={4}>
+            <Grid item xs={12} sm={4} sx={{ color:'#FFF' }}>
+                <Typography variant='h4'>CONTACT US</Typography>
+                <Typography variant='h6' color='red'>cinotrends@gmail.com</Typography>
+                <br/>
+                <br/>
+                <Typography variant='h4'>OFFICE</Typography>
+                <Typography variant='h6'><a href='tel:00971507355523'>+971 50 735 5523</a></Typography>
+            </Grid>
             <Grid item xs={12} sm={4}>
                 <Typography variant='h6'>
-                    Column 1
+                    FOLLOW US
                 </Typography>
                 <ul>
                     <li><a href='#'>Link 1</a></li>
@@ -34,17 +43,7 @@ function Footer () {
             </Grid>
             <Grid item xs={12} sm={4}>
                 <Typography variant='h6'>
-                    Column 1
-                </Typography>
-                <ul>
-                    <li><a href='#'>Link 1</a></li>
-                    <li><a href='#'>Link 2</a></li>
-                    <li><a href='#'>Link 3</a></li>
-                </ul>
-            </Grid>
-            <Grid item xs={12} sm={4}>
-                <Typography variant='h6'>
-                    Column 1
+                    LOCATION
                 </Typography>
                 <ul>
                     <li><a href='#'>Link 1</a></li>
