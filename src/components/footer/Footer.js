@@ -1,6 +1,7 @@
 import React from 'react';
 import { Grid, Link, Typography } from '@mui/material';
 import { FacebookRounded, LinkedIn, Twitter, YouTube } from '@mui/icons-material';
+import { Box } from '@mui/system';
 
 
 function Footer () {
@@ -9,30 +10,34 @@ function Footer () {
         background: '#090F24',
         padding: '4rem'
     }}>
-        <Grid container spacing={4} sx={{ color: '#FFF' }}>
-            <Grid item xs={12} sm={4} sx={{border: 'solid', alignItems: 'center'}}>
-                <Typography variant='h4' sx={{textAlign: 'center', border:'solid'}}>
+        <Grid container spacing={4} sx={{ color: '#FFF' , paddingTop: '3rem'}}>
+            <Grid xs={12} sm={4}>
+                <Box sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center'
+                }}>
+                <Typography variant='h4'>
                     CONTACT US
                 </Typography>
-                <br />
                 <Link
                 href='mailto:cinotrends@gmail.com'
                 underline='hover'
-                sx={{ fontSize: '1.1rem', border: 'solid'}}>
+                sx={{ fontSize: '1.1rem'}}>
                     cinotrends@gmail.com
                 </Link>
                 <br />
                 <br />
                 <Typography variant='h4'>OFFICE</Typography>
-                <br />
                 <Link
                 href='tel:00971507355523'
                 underline='hover'
                 sx={{ fontSize: '1.1rem' }}>
                     +971 50 735 5523
                 </Link>
+                </Box>
             </Grid>
-            <Grid item xs={12} sm={4}>
+            <Grid xs={12} sm={4}>
                 <Typography variant='h4' sx={{textAlign: 'center'}}>
                     FOLLOW US
                 </Typography>
@@ -59,12 +64,14 @@ function Footer () {
                     </Link>
                 </Grid>
             </Grid>
-            <Grid item xs={12} sm={4}>
+            <Grid  xs={12} sm={4}>
                 <Typography variant='h4' sx={{textAlign: 'center'}}>
                     LOCATION
                 </Typography>
                 <br/>
                 <Link
+                href='https://goo.gl/maps/CBdWs5ymjuT8X45F8'
+                target="_blank"
                 underline='hover'
                 sx={{ fontSize: '1.1rem' }}>
                     Cino Trends FZ LLC<br />

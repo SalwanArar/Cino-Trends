@@ -26,7 +26,7 @@ function TabPanel(props) {
         {...other}
         >
         {value === index && (
-            <Box sx={{ p: 3 }}>
+            <Box sx={{ maxWidth: '1024px' }}>
             {children}
             </Box>
         )}
@@ -48,13 +48,13 @@ function a11yProps(index) {
 }
 
 const flex = {
-    border: 'solid',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
     alignSelf: 'center',
 };
+
 function OurPortfolio() {   
     const [selectedIndex, setSelectedIndex] = useState(0);
     const [anchorEl, setAnchorEl] = useState(null);
@@ -84,13 +84,6 @@ function OurPortfolio() {
     const handleClose = () => {
         setAnchorEl(null);
     };
-    // const handleMenuClick = (event) => {
-    //   setAnchorEl(event.currentTarget);
-    // };
-
-    // const handleMenuClose = () => {
-    //   setAnchorEl(null);
-    // };
 
     return (
         <section className='m--portfolio'>
@@ -98,14 +91,6 @@ function OurPortfolio() {
             <Typography variant='p' component='p' >Create video that inspire your audience.</Typography>
             <Box
             sx={flex} 
-            // sx={{
-            //     maxWidth: '1024px',
-            //     display: 'flex',
-            //     flexDirection: 'column',
-            //     border: "solid",
-            //     alignItems: 'center',
-            //     justifyContent: 'center',
-            // }}
             >
                 { !isMobile ?
                     <Tabs value={selectedIndex} onChange={handleTabChange} variant="scrollable" scrollButtons="auto">
