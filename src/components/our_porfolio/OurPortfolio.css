@@ -5,6 +5,7 @@ section {
 .m--portfolio {
     padding: 3rem;
     margin: 0;
+    color: white;
     /* height: 500px; */
     display: flex;
     flex-direction: column;

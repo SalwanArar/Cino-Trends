@@ -1,10 +1,11 @@
+import './App.css';
 import { ThemeProvider } from '@mui/material';
 import Header from './components/header/Header.js';
 import Main from './components/main/Main.js';
 import OurPortfolio from './components/our_porfolio/OurPortfolio.js';
 import Footer from './components/footer/Footer.js';
 import {createTheme} from '@mui/material/styles';
-import './App.css';
+import HowWeAnimate from './components/how_we_animate/HowWeAnimate.js';
 
 const theme = createTheme({
   palette: {
@@ -24,7 +25,8 @@ function App() {
       <div className='app-background'>
         <Header />
         <Main />
-        <OurPortfolio />
+        <OurPortfolio/>
+        <HowWeAnimate/>
         <Footer />
       </div>
     </ThemeProvider>

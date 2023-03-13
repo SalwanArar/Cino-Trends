@@ -1,11 +1,12 @@
 import './OurPortfolio.css';
 import Latest from './tabs/Latest';
+import MotionGraphic from './tabs/MotionGtaphic';
 import PropTypes from 'prop-types';
-import { useEffect ,useState } from 'react';
-import { Box, Tab, Tabs, Typography, Menu, MenuItem, ListItem, List, ListItemText } from '@mui/material';
+import { useEffect, useState } from 'react';
+import { Box, Tab, Tabs, Typography, Menu, MenuItem, ListItem, List, ListItemText, useMediaQuery, useTheme } from '@mui/material';
 
 const options = [
-    'Leatest',
+    'Latest',
     'Motion Graphic',
     '2D Animation',
     'Digital Paining',
@@ -13,6 +14,16 @@ const options = [
     'Character Design',
     'Digital Marketing',
   ];
+
+const optionsContent = [
+    <Latest />,
+    <MotionGraphic />,
+    '2D Animation',
+    'Digital Paining',
+    'White Board',
+    'Character Design',
+    'Digital Marketing',
+];
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -26,7 +37,7 @@ function TabPanel(props) {
         {...other}
         >
         {value === index && (
-            <Box sx={{ maxWidth: '1024px' }}>
+            <Box sx={{ paddingTop: 1, maxWidth: '1200px', }}>
             {children}
             </Box>
         )}
@@ -58,15 +69,18 @@ const flex = {
 function OurPortfolio() {   
     const [selectedIndex, setSelectedIndex] = useState(0);
     const [anchorEl, setAnchorEl] = useState(null);
-    const [isMobile, setIsMobile] = useState(false);
+    // const [isMobile, setIsMobile] = useState(false);
     const open = Boolean(anchorEl);
 
-    useEffect(() => {
-        const handleResize = () => setIsMobile(window.innerWidth <= 768);
-        window.addEventListener('resize', handleResize);
-        handleResize();
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
+    // const theme = useTheme();
+    // const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+    const isMobile = false;
+    // useEffect(() => {
+    //     const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    //     window.addEventListener('resize', handleResize);
+    //     handleResize();
+    //     return () => window.removeEventListener('resize', handleResize);
+    // }, []);
 
     const handleTabChange = (event, newValue) => {
         setSelectedIndex(newValue);
@@ -87,15 +101,44 @@ function OurPortfolio() {
 
     return (
         <section className='m--portfolio'>
-            <Typography variant='h2' component='h2' >Our Portfolio</Typography>
-            <Typography variant='p' component='p' >Create video that inspire your audience.</Typography>
+            <Typography
+            variant='h2'
+            component='h2'>
+                Our Portfolio
+            </Typography>
+            <Typography
+            variant='caption'
+            component='caption'
+            sx={{ fontSize: '2rem' }}>
+                Create video that inspire your audience.
+            </Typography>
             <Box
             sx={flex} 
             >
                 { !isMobile ?
-                    <Tabs value={selectedIndex} onChange={handleTabChange} variant="scrollable" scrollButtons="auto">
+                    <Tabs
+                    value={selectedIndex}
+                    onChange={handleTabChange}
+                    variant="scrollable"
+                    scrollButtons="auto"
+                    sx={{
+                        marginTop: '48px',
+                        '& .MuiTabs-indicator': {
+                            display: 'none',
+                        }
+                    }}>
                         {options.map((option, index) =>
-                            <Tab label={option} {...a11yProps(index)}/>
+                            <Tab
+                            label={option}
+                            {...a11yProps(index)}
+                            sx={{
+                                background: selectedIndex === index ? '#090F24': 'transparent',
+                                color: '#FFF',
+                                borderRadius: '6px',
+                                fontSize: '1.15rem',
+                                fontWeight: 'bold',
+                            }}
+                            />
                         )}
                     </Tabs>
                     :
@@ -116,6 +159,7 @@ function OurPortfolio() {
                         >
                             <ListItemText
                             primary={options[selectedIndex]}
+                            sx={{color:'red'}}
                             />
                         </ListItem>
                     </List>
@@ -146,14 +190,17 @@ function OurPortfolio() {
                         </Menu>
                     </>
                 }
-                {options.map((option, index) =>
+                {optionsContent.map((option, index) =>
                     <TabPanel value={selectedIndex} index={index}>
-                        {index === 0 ? <Latest />: option}
+                        {option}
+                        {/* {index === 0 ? <Latest />: option} */}
                     </TabPanel>
                 )}
             </Box>
         </section>
     );
 }
+
+// porfolioSwitch (index) {}
 
 export default OurPortfolio;
