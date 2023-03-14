@@ -9,6 +9,16 @@ import HajjOmra from './assets/motion_graphic/HAJJ & OMRA.mp4';
 import Nory from './assets/motion_graphic/NORY .mp4';
 import Rabeh from './assets/motion_graphic/RABEH .mp4';
 
+import thumbnail1 from './assets/motion_graphic/AL FATEHA APP.png';
+import thumbnail2 from './assets/motion_graphic/AL RAWDA FACTORY...png';
+import thumbnail3 from './assets/motion_graphic/AL RAWDA FACTORY..png';
+import thumbnail4 from './assets/motion_graphic/AL RAWDA FACTORY.png';
+import thumbnail5 from './assets/motion_graphic/ESDCO.png';
+import thumbnail6 from './assets/motion_graphic/HAJJ & OMRA.png';
+import thumbnail7 from './assets/motion_graphic/NORY .png';
+import thumbnail8 from './assets/motion_graphic/RABEH .png';
+
+
 const videos = [
     AlFathea,
     AlRawda3,
@@ -20,7 +30,19 @@ const videos = [
     Rabeh,
 ];
 
-function CustomCardMedia ({src}) {
+
+const thumbnails = [
+    thumbnail1,
+    thumbnail2,
+    thumbnail3,
+    thumbnail4,
+    thumbnail5,
+    thumbnail6,
+    thumbnail7,
+    thumbnail8,
+];
+
+function CustomCardMedia ({video, thumbnail}) {
     const [open, setOpen] = useState(false);
     const handleOpen = () => {
         setOpen(true);
@@ -33,10 +55,10 @@ function CustomCardMedia ({src}) {
             <Card sx={{margin: '1rem'}}>
                 <CardActionArea onClick={handleOpen}>
                     <CardMedia
-                    component='video'
+                    component='img'
                     width='auto'
-                    src= {src}
-                    alt='video'
+                    src= {thumbnail}
+                    alt='img'
                     // autoPlay
                     // controls
                     sx={{
@@ -50,7 +72,8 @@ function CustomCardMedia ({src}) {
                 <Card>
                     <CardMedia
                     component='video'
-                    src={src}
+                    src={video}
+                    alt="Sorry this video doesn't work on your browser"
                     autoPlay
                     loop
                     />
@@ -67,7 +90,8 @@ function MotionGraphic () {
         >
             {videos.map((video, index)=>
                 <Grid xs={3}>
-                    <CustomCardMedia src= {video} />
+                    <CustomCardMedia video= { video } thumbnail={thumbnails[index]}/>
+                    {/* {thumbnails[index]} */}
                 </Grid>
             )}
         </Grid>

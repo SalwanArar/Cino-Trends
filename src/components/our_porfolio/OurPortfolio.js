@@ -72,9 +72,9 @@ function OurPortfolio() {
     // const [isMobile, setIsMobile] = useState(false);
     const open = Boolean(anchorEl);
 
-    // const theme = useTheme();
-    // const isMobile = useMediaQuery(theme.breakpoints.down('md'));
-    const isMobile = false;
+    const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+    // const isMobile = false;
     // useEffect(() => {
     //     const handleResize = () => setIsMobile(window.innerWidth <= 768);
     //     window.addEventListener('resize', handleResize);
@@ -201,6 +201,17 @@ function OurPortfolio() {
     );
 }
 
-// porfolioSwitch (index) {}
+// const theme = createTheme({
+//     components: {  
+//     MuiTabs: {
+//     styleOverrides: {
+//       indicator: {
+//         backgroundColor: 'orange',
+//         height: 10,
+//       },
+//     },
+//   },
+//   }
+//   })
 
 export default OurPortfolio;
