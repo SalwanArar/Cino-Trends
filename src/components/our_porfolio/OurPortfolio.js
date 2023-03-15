@@ -66,7 +66,7 @@ const flex = {
     alignSelf: 'center',
 };
 
-function OurPortfolio() {   
+function OurPortfolio() {
     const [selectedIndex, setSelectedIndex] = useState(0);
     const [anchorEl, setAnchorEl] = useState(null);
     // const [isMobile, setIsMobile] = useState(false);
