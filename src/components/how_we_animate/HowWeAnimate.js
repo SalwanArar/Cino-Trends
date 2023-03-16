@@ -1,6 +1,5 @@
 import { useTheme } from "@emotion/react";
 import { Typography, Grid, Box, Card, useMediaQuery, CardContent, CardMedia, IconButton } from '@mui/material';
-// import Carousel from "react-multi-carousel";
 
 
 import gif1 from './assets/datacollection.gif';
@@ -11,7 +10,6 @@ import gif5 from './assets/animation.gif';
 import gif6 from './assets/delivery.gif';
 import { ChevronLeft, ChevronRight } from "@mui/icons-material";
 import { useEffect, useState } from "react";
-// import Carousel from "react-multi-carousel";
 
 const gifs = [
     gif1,
@@ -39,9 +37,7 @@ function CustomCardAnimate ({src, index, caption}) {
     return (
         <Card sx={{
             key: index,
-            // flexGrow:1,
-            // p:3,
-            m:`${isMobile? 0: 2}`,
+            m:`${isMobile? 0: '1rem'}`,
             backgroundColor: isOdd(index)? '#26558B' : '#FFF',
             minWidth: `${isMobile? '100%': 'auto'}`,
             borderRadius: '8px',
@@ -138,21 +134,14 @@ function Carousel({
             width: '30rem',
             overflow: 'hidden',
             position: 'relative',
-            // border: 'solid black',
-            // paddingInline: '2rem'
         }}
         >
             <div
             style={{
                 display: 'flex',
-                // gap: '4rem',
-                // marginInline: '1rem',
-                // flexWrap: 'nowrap',
-                // flexGrow: '1',
                 transition: 'ease-out',
                 transitionDuration: '500ms',
                 transform: `translateX(-${curr * 100}%)`,
-                // border: 'solid blue'
             }}>
                 {slides}
             </div>
@@ -180,14 +169,6 @@ function HowWeAnimate() {
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
-    // const items = [
-    //     { id: 1, title: 'Item 1' },
-    //     { id: 2, title: 'Item 2' },
-    //     { id: 3, title: 'Item 3' },
-    //     { id: 4, title: 'Item 4' },
-    //     { id: 5, title: 'Item 5' },
-    //     { id: 6, title: 'Item 6' },
-    //   ];
     return (
         <Box className="m--portfolio" component={'div'}>
             <Typography variant="h2" component='h2'>
@@ -211,68 +192,27 @@ function HowWeAnimate() {
                         }
                     </Carousel>
                     :
-                            <Box
-                            sx={{
-                                maxWidth: '1000px',
-                                marginTop: '48px' ,
-                                overflow: 'hidden',
-                                // position: 'relative',
-                            }}>
-                    <Grid container >
-                        {gifs.map((gif, index) => (
-                             <Grid xs={6} sm={4}>
-                                 <CustomCardAnimate src={gif} index={index} caption={captions[index]}/>
-                             </Grid>
-                         ))}
-                     </Grid> 
-            </Box>
+                    <Box
+                    sx={{
+                        maxWidth: '1000px',
+                        marginTop: '48px' ,
+                        overflow: 'hidden',
+                        // position: 'relative',
+                    }}>
+                        <Grid container >
+                            {gifs.map((gif, index) => (
+                                <Grid xs={6} sm={4}>
+                                    <CustomCardAnimate src={gif} index={index} caption={captions[index]}/>
+                                </Grid>
+                            ))}
+                        </Grid> 
+                    </Box>
             }
+            <Typography>
+            We ask the client to fill out questionnaire and provide us with the details needed to proceed with the project. then we will call you for clarifications of details and discuss the terms and conditions.
+            </Typography>
         </Box>
     );
-    // return (
-    //     <Box
-    //     sx={{
-    //         overflow: 'hidden',
-    //         // position: 'relative'
-    //     }}
-    //     className="m--portfolio">
-    //         <Typography variant="h2" component='h2'>
-    //             How We Animate
-    //         </Typography>
-    //         <Typography
-    //         variant='caption'
-    //         component='caption'
-    //         sx={{ fontSize: '2rem' }}
-    //         >
-    //             Create video that inspire your audience.
-    //         </Typography>
-    //         <Box
-    //         sx={{
-    //             maxWidth: '1000px',
-    //             marginTop: '48px' ,
-    //             overflow: 'hidden',
-    //             // position: 'relative',
-    //         }}>
-    //             {
-    //                 isMobile ?
-    //                 <Carousel>
-    //                      {gifs.map((gif, index) => (
-    //                         // <img src={ gif }/>
-    //                          <CustomCardAnimate src={gif} index={index} caption={captions[index]}/>
-    //                      ))}
-    //                  </Carousel>
-    //                 :
-    //                 <Grid container >
-    //                     {gifs.map((gif, index) => (
-    //                         <Grid xs={6} sm={4}>
-    //                             <CustomCardAnimate src={gif} index={index} caption={captions[index]}/>
-    //                         </Grid>
-    //                     ))}
-    //                 </Grid> 
-    //             }
-    //         </Box>
-    //     </Box>
-    // );
 }
 
 export default HowWeAnimate;
