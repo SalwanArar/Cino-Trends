@@ -120,7 +120,9 @@ function HowWeAnimate() {
             <Box sx={{ maxWidth: '1200px', marginTop: '48px' }}>
                 {
                     !isMobile ?
-                    isMobile
+                    <div>
+                        Hello, World!
+                    </div>
                     :
                     <Grid container >
                         {gifs.map((gif, index) => (
