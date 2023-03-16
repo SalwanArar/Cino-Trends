@@ -2,7 +2,7 @@ import './OurPortfolio.css';
 import Latest from './tabs/Latest';
 import MotionGraphic from './tabs/MotionGtaphic';
 import PropTypes from 'prop-types';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Box, Tab, Tabs, Typography, Menu, MenuItem, ListItem, List, ListItemText, useMediaQuery, useTheme } from '@mui/material';
 
 const options = [
