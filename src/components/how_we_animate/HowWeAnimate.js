@@ -1,5 +1,5 @@
 import { useTheme } from "@emotion/react";
-import { Typography, Grid, Box, Card, useMediaQuery, CardContent, CardMedia, IconButton, Button } from '@mui/material';
+import { Typography, Grid, Box, Card, useMediaQuery, CardContent, CardMedia, IconButton } from '@mui/material';
 // import Carousel from "react-multi-carousel";
 
 
@@ -10,6 +10,7 @@ import gif4 from './assets/voiceover.gif';
 import gif5 from './assets/animation.gif';
 import gif6 from './assets/delivery.gif';
 import { ChevronLeft, ChevronRight } from "@mui/icons-material";
+import { useEffect, useState } from "react";
 // import Carousel from "react-multi-carousel";
 
 const gifs = [
@@ -33,12 +34,16 @@ const captions = [
 function isOdd(num) { return num % 2;}
 
 function CustomCardAnimate ({src, index, caption}) {
+    const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down('md'));
     return (
         <Card sx={{
             key: index,
-            p:3,
-            m:2,
+            // flexGrow:1,
+            // p:3,
+            m:`${isMobile? 0: 2}`,
             backgroundColor: isOdd(index)? '#26558B' : '#FFF',
+            minWidth: `${isMobile? '100%': 'auto'}`,
             borderRadius: '8px',
             aspectRatio: '1/1'
             }}>
@@ -72,14 +77,7 @@ function CustomCardAnimate ({src, index, caption}) {
                     component='img'
                     alt={'gif' + (index + 1)}
                     src={src}
-                    style={{
-
-                    }}
-                    sx={{
-                        aspectRatio: '1/1',
-                    //     border: 'solid',
-                    //     // flex: 'wrap'
-                    }}
+                    sx={{ aspectRatio: '1/1' }}
                     />
                 </Box>
             </CardContent>
@@ -88,47 +86,78 @@ function CustomCardAnimate ({src, index, caption}) {
 }
 
 
-function BackButton() {
+function BackButton({children: slides, onClick}) {
     return (
       <Box
         sx={{
-          bgcolor: '#FFFFFF',
+          bgcolor: '#090F2488',
           borderRadius: '50%',
           boxShadow: '0px 2px 6px rgba(0, 0, 0, 0.1)',
-          width: '56px',
-          height: '56px',
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
           cursor: 'pointer',
-          transition: 'all 0.2s ease-in-out',
+          transition: 'all 0.2s ease-in',
+          m: 1,
+          p: 1,
           '&:hover': {
-            bgcolor: '#E0E0E0',
+            bgcolor: '#090F24',
             boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.2)',
           },
         }}
         >
-        <IconButton sx={{ p: 0 }}>
-          <ChevronLeft sx={{ color: '#757575', fontSize: '32px' }} />
+        <IconButton
+        onClick={ onClick }
+        sx={{
+            p: 0,
+            color: '#64C3BD',
+        }}>
+            { slides }
+          
         </IconButton>
       </Box>
     );
 }
 
-function Carousel({children: slides}) {
+function Carousel({
+    children: slides,
+    autoSlideInterval = 5000,
+}) {
+    const [curr, setCurr] = useState(0);
+
+    const prev = () => setCurr((curr) => curr === 0 ? slides.length - 1: curr - 1);
+    const next = () => setCurr((curr) => curr === slides.length - 1 ? 0: curr + 1);
+
+    useEffect(() => {
+        const slideInterval = setInterval(next, autoSlideInterval);
+        return () => clearInterval(slideInterval);
+    }, []);
     return (
-        <Box
-        component={'div'}
-        sx={{
+        <div
+        style={{
+            width: '30rem',
             overflow: 'hidden',
             position: 'relative',
-        }}>
-            <Box component={ 'div' } sx={{ display: 'flex' }} >
-                { slides }
-            </Box>
-            <Box
-            component={ 'div' }
-            sx={{
+            // border: 'solid black',
+            // paddingInline: '2rem'
+        }}
+        >
+            <div
+            style={{
+                display: 'flex',
+                // gap: '4rem',
+                // marginInline: '1rem',
+                // flexWrap: 'nowrap',
+                // flexGrow: '1',
+                transition: 'ease-out',
+                transitionDuration: '500ms',
+                transform: `translateX(-${curr * 100}%)`,
+                // border: 'solid blue'
+            }}>
+                {slides}
+            </div>
+            <div
+            style={{
                 position: 'absolute',
                 inset: 0,
                 display: 'flex',
@@ -136,22 +165,14 @@ function Carousel({children: slides}) {
                 justifyContent: 'space-between',
                 p: 4,
             }}>
-                <Box
-                sx={{
-                    backgroundColor: '#090F24',
-                    boxShadow: '10px 1px 50px rgba(0, 0, 0, 0.1)',
-                    borderRadius: '50%',
-                }}>
-                    <IconButton size='large' aria-label="upload picture" component="label">
-                        <ChevronLeft color="local"/>
-                    </IconButton>
-                </Box>
-                <BackButton />
-                <Box component={'button'}>
-                    <ChevronRight size={40}/>
-                </Box>
-            </Box>
-        </Box>
+            <BackButton onClick={prev}>
+                <ChevronLeft sx={{  fontSize: '32px' }} />
+            </BackButton>
+            <BackButton onClick={next}>
+                <ChevronRight sx={{  fontSize: '32px' }} />
+            </BackButton>
+            </div>
+        </div>
     );
 }
 
@@ -167,9 +188,8 @@ function HowWeAnimate() {
     //     { id: 5, title: 'Item 5' },
     //     { id: 6, title: 'Item 6' },
     //   ];
-
     return (
-        <section className="m--portfolio">
+        <Box className="m--portfolio" component={'div'}>
             <Typography variant="h2" component='h2'>
                 How We Animate
             </Typography>
@@ -180,26 +200,79 @@ function HowWeAnimate() {
             >
                 Create video that inspire your audience.
             </Typography>
-            <Box sx={{ maxWidth: '1200px', marginTop: '48px' }}>
-                {
-                    !isMobile ?
+            {
+                isMobile ?
                     <Carousel>
-                         {gifs.map((gif, index) => (
-                             <CustomCardAnimate src={gif} index={index} caption={captions[index]}/>
-                         ))}
-                     </Carousel>
+                        {
+                            gifs.map((gif, index) => (
+                                <CustomCardAnimate src={gif} index={index} caption={captions[index]}/>
+                                // <img src={gif} width="100%" style={{border:'solid red'}}/>
+                            ))
+                        }
+                    </Carousel>
                     :
+                            <Box
+                            sx={{
+                                maxWidth: '1000px',
+                                marginTop: '48px' ,
+                                overflow: 'hidden',
+                                // position: 'relative',
+                            }}>
                     <Grid container >
                         {gifs.map((gif, index) => (
-                            <Grid xs={6} sm={4}>
-                                <CustomCardAnimate src={gif} index={index} caption={captions[index]}/>
-                            </Grid>
-                        ))}
-                    </Grid> 
-                }
+                             <Grid xs={6} sm={4}>
+                                 <CustomCardAnimate src={gif} index={index} caption={captions[index]}/>
+                             </Grid>
+                         ))}
+                     </Grid> 
             </Box>
-        </section>
+            }
+        </Box>
     );
+    // return (
+    //     <Box
+    //     sx={{
+    //         overflow: 'hidden',
+    //         // position: 'relative'
+    //     }}
+    //     className="m--portfolio">
+    //         <Typography variant="h2" component='h2'>
+    //             How We Animate
+    //         </Typography>
+    //         <Typography
+    //         variant='caption'
+    //         component='caption'
+    //         sx={{ fontSize: '2rem' }}
+    //         >
+    //             Create video that inspire your audience.
+    //         </Typography>
+    //         <Box
+    //         sx={{
+    //             maxWidth: '1000px',
+    //             marginTop: '48px' ,
+    //             overflow: 'hidden',
+    //             // position: 'relative',
+    //         }}>
+    //             {
+    //                 isMobile ?
+    //                 <Carousel>
+    //                      {gifs.map((gif, index) => (
+    //                         // <img src={ gif }/>
+    //                          <CustomCardAnimate src={gif} index={index} caption={captions[index]}/>
+    //                      ))}
+    //                  </Carousel>
+    //                 :
+    //                 <Grid container >
+    //                     {gifs.map((gif, index) => (
+    //                         <Grid xs={6} sm={4}>
+    //                             <CustomCardAnimate src={gif} index={index} caption={captions[index]}/>
+    //                         </Grid>
+    //                     ))}
+    //                 </Grid> 
+    //             }
+    //         </Box>
+    //     </Box>
+    // );
 }
 
 export default HowWeAnimate;

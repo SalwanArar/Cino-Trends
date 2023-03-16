@@ -64,11 +64,12 @@ function Footer () {
                     </Link>
                 </Grid>
             </Grid>
-            <Grid  xs={12} sm={4}>
+            <Grid  xs={12} sm={4} sx={{ alignItems: 'center' }}>
                 <Typography variant='h4' sx={{textAlign: 'center'}}>
                     LOCATION
                 </Typography>
                 <br/>
+                <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                 <Link
                 href='https://goo.gl/maps/CBdWs5ymjuT8X45F8'
                 target="_blank"
@@ -78,6 +79,7 @@ function Footer () {
                     Cornich View Tower, Office 101,<br />
                     Al Markaziyah West, Abu Dhabi, UAE
                 </Link>
+                </Box>
             </Grid>
         </Grid>
     </footer>
