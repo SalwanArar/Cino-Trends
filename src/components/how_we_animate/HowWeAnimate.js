@@ -208,8 +208,12 @@ function HowWeAnimate() {
                         </Grid> 
                     </Box>
             }
-            <Typography>
-            We ask the client to fill out questionnaire and provide us with the details needed to proceed with the project. then we will call you for clarifications of details and discuss the terms and conditions.
+            <br/>
+            <br/>
+            <br/>
+            <Typography
+            variant={ 'h4' } component={ 'h4' } align={'center'}>
+                We ask the client to fill out questionnaire and provide us with the details needed to proceed with the project. then we will call you for clarifications of details and discuss the terms and conditions.
             </Typography>
         </Box>
     );

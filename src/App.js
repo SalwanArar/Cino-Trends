@@ -6,6 +6,7 @@ import OurPortfolio from './components/our_porfolio/OurPortfolio.js';
 import Footer from './components/footer/Footer.js';
 import {createTheme} from '@mui/material/styles';
 import HowWeAnimate from './components/how_we_animate/HowWeAnimate.js';
+import Bannar from './assets/images/mwc.png';
 
 const theme = createTheme({
   palette: {
@@ -27,6 +28,7 @@ function App() {
         <Main />
         <OurPortfolio/>
         <HowWeAnimate/>
+        <img src={Bannar} style={{width:"100%"}}/>
         <Footer />
       </div>
     </ThemeProvider>
