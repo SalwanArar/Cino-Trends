@@ -14,8 +14,8 @@ function ResponsiveBox({title, price, children}) {
             justifyContent: 'space-between',
             alignItems: 'center',
             padding: '0',
-            backgroundColor: '#FFFFFF',
-            borderRadius: '8px',
+            backgroundColor: 'linear-gradient(0deg, white 90%, rgba(44, 64, 143, 1) 90%)',
+            borderRadius: '12px',
             boxShadow: '0px 2px 6px rgba(0, 0, 0, 0.1)',
             maxWidth: '40rem',
             minWidth: isMobile ? '40rem':'0',
@@ -30,10 +30,10 @@ function ResponsiveBox({title, price, children}) {
                 flexDirection: 'column',
                 justifyContent: 'center',
                 alignItems: 'center',
-                backgroundColor: '#26558B',
+                backgroundColor: 'rgba(44, 64, 143, 1)',
                 padding: '1.6rem',
                 width: '100%',
-                borderRadius: '8px 8px 0 0',
+                borderRadius: '12px 12px 0 0',
             }}>
                 <Typography
                 variant="h5"
@@ -90,7 +90,7 @@ function ResponsiveBox({title, price, children}) {
                             p: '1rem 0rem',
                             fontSize: '1.5rem',
                             fontWeight: '500',
-                            background: index % 2 === 1 ? 'none' : 'rgba(0,0,0,0.05)'
+                            background: index % 2 === 1 ? 'none' : 'rgba(0, 0, 0, 0.05)'
                         }}>
                             { item }
                         </Typography>

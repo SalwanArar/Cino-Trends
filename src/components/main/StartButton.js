@@ -1,43 +1,16 @@
-import React from "react";
+import React, {useState} from "react";
 import Dialog from "@mui/material/Dialog";
 import DialogTitle from "@mui/material/DialogTitle";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import Button from "@mui/material/Button";
 import TextField from '@mui/material/TextField';
-// import Slide from '@mui/material/Slide';
-// import styled from '@mui/material/styles/styled';
+import Slide from '@mui/material/Slide';
+import { Box } from "@mui/system";
 
-// const Transition = React.forwardRef(function Transition(props, ref) {
-//     return <Slide direction="up" ref={ref} {...props} />;
-// });
-
-
-
-// const CssTextField = styled(TextField)({
-//     '& label.Mui-focused': {
-//         color: 'white',
-//         fontSize: '1.5rem',
-//     },
-//     '& .MuiInput-underline:after': {
-//         borderBottomColor: 'green',
-//         borderColor: 'red',
-//     },
-//     '& .MuiOutlinedInput-root': {
-//         '& fieldset': {
-//         borderColor: 'white',
-//         color: 'white   '
-//         // background: 'white'
-//         },
-//         '&:hover fieldset': {
-//         borderColor: 'primary',
-//         color: 'blue'
-//         },
-//         '&.Mui-focused fieldset': {
-//         borderColor: 'primary',
-//         },
-//     },
-// });
+const Transition = React.forwardRef(function Transition(props, ref) {
+    return <Slide direction="down" ref={ref} {...props} />;
+});
 
 function StartButton() {
 const [open, setOpen] = React.useState(false);
@@ -50,6 +23,22 @@ const handleToClose = () => {
 	setOpen(false);
 };
 
+const [fullName, setFullName] = useState('');
+const [email, setEmail] = useState('');
+const [phoneNumber, setPhoneNumber] = useState('');
+const [brief, setBrief] = useState('');
+
+const handleSubmit = (event) => {
+  event.preventDefault();
+  const formData = {
+    fullName: fullName,
+    email: email,
+    phoneNumber: phoneNumber,
+    brief: brief
+  };
+  const url = 'mailto:info@cinotrends.com?subject=Contact Form Submission';
+  window.open(url + '&body=' + JSON.stringify(formData));
+};
 
 
 return (
@@ -70,71 +59,108 @@ return (
             GET STARTED
         </Button>
         <Dialog
-            open={open}
-            onClose={handleToClose}
-            keepMounted
-            aria-describedby="dialog for get start our services"
-            sx={{
-                '& .MuiDialog-paper': {
-                    background: '#6DC3BD'
-                }
-            }}
+        open={open}
+        onClose={handleToClose}
+        keepMounted
+        aria-describedby="dialog for get start our services"
+        TransitionComponent={Transition}
+        sx={{
+            '& .MuiDialog-paper': {
+                background: '#6DC3BD'
+            }
+        }}
         >
-            {/* <div className="dialog-backgound"> */}
             <DialogTitle
                 color= 'secondary'
                 fontSize= '2.2rem'
                 style= {{
-                    fontWeight: '500'
+                    fontWeight: 'bolder'
                 }}
                 >
                 {"WANT TO GET STARTED?"}
             </DialogTitle>
             <DialogContent>
-            {customTextField('Test')}
-            {customTextField('Test')}
-            {customTextField('Test')}
-            {customTextField('Test')}
-            </DialogContent>
-            <DialogActions>
-                <Button
+                <Box
+                variant="contained"
+                component={'form'}
+                onSubmit={handleSubmit}>
+                    <CustomTextField
+                    label='Full Name'
+                    type={'name'}
+                    onChange={(event) => setFullName(event.target.value)} />
+                    <CustomTextField
+                    label='Phone Number'
+                    type={'tel'}
+                    onChange={(event) => setPhoneNumber(event.target.value)} />
+                    <CustomTextField
+                    label='Email' 
+                    type={'email'}
+                    onChange={(event) => setEmail(event.target.value)} />
+                    <CustomTextField
+                    label='Brief'
+                    type={'text'}
+                    isMultiLine={true}
+                    onChange={(event) => setBrief(event.target.value)} />
+
+                    <DialogActions>
+                        <Button
                         aria-label="closes"
                         onClick={handleToClose}
                         variant="contained"
-                        autoFocus
                         style={{
                             color: 'white'
                         }}
                         sx={{
-                            background: 'linear-gradient(90deg, #26558B 0%, #6DC3BD 100%)',
+                            background: '#26558B',
                             fontSize: '1.5rem',
                             fontWeight: 'bold',
                             borderRadius: '28px',
                             paddingInline: '4rem',
-                        }}
-                        >
-                    Close
-                </Button>
-            </DialogActions>
-            {/* </div> */}
+                        }}>
+                            Close
+                        </Button>
+                        <Button
+                                aria-label="submit"
+                                variant="contained"
+                                autoFocus
+                                type="submit"
+                                style={{
+                                    color: 'white'
+                                }}
+                                sx={{
+                                    background: 'linear-gradient(90deg, #6DC3BD 0%, #26558B 50%, #6DC3BD 100%)',
+                                    fontSize: '1.5rem',
+                                    fontWeight: 'bold',
+                                    borderRadius: '28px',
+                                    paddingInline: '4rem',
+                                }}
+                                >
+                            Submit
+                        </Button>
+                    </DialogActions>
+                </Box>
+            </DialogContent>
         </Dialog>
 	</div>
 );
 }
 
-function customTextField(label) {
+function CustomTextField({label, isMultiLine = false, type, onChange}) {
     return (
         <TextField
             label={label}
+            type={type}
             color= 'bg'
             fullWidth
-            // fontSize= '1.8rem'
             margin='dense'
+            required
+            multiline={isMultiLine}
+            rows={isMultiLine? 4:1}
+            onChange={onChange}
             InputLabelProps={{
                 style: {
-                    // color: '#090F24',
                     fontSize: '1.8rem',
-                    fontWeight: 'bolder',
+                    fontWeight: '600',
                     paddingRight: '10px'
                 }
             }}
@@ -142,7 +168,6 @@ function customTextField(label) {
                 style: {
                     background: 'white',
                     fontSize: '1.8rem',
-                    // color: 'white'
                 }
             }}
         />
