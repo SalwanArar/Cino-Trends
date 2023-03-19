@@ -52,7 +52,7 @@ function CustomCardAnimate ({src, index, caption}) {
                     fontWeight: 'bold',
                     color: isOdd(index)? '#FFF' : '#26558B',
                 }}>
-                    {caption}
+                    { caption }
                 </Typography>
                 <Box
                 sx={{
@@ -187,7 +187,6 @@ function HowWeAnimate() {
                         {
                             gifs.map((gif, index) => (
                                 <CustomCardAnimate src={gif} index={index} caption={captions[index]}/>
-                                // <img src={gif} width="100%" style={{border:'solid red'}}/>
                             ))
                         }
                     </Carousel>

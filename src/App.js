@@ -7,6 +7,8 @@ import Footer from './components/footer/Footer.js';
 import {createTheme} from '@mui/material/styles';
 import HowWeAnimate from './components/how_we_animate/HowWeAnimate.js';
 import Bannar from './assets/images/mwc.png';
+import PackagesSection from './components/packages_for_you/PackagesSection.js';
+import SocialMediaPackages from './components/social_media_packages/SocialMediaPackages.js';
 
 const theme = createTheme({
   palette: {
@@ -26,9 +28,11 @@ function App() {
       <div className='app-background'>
         <Header />
         <Main />
-        <OurPortfolio/>
-        <HowWeAnimate/>
-        <img src={Bannar} style={{width:"100%"}}/>
+        <OurPortfolio />
+        <HowWeAnimate />
+        <img src={Bannar} alt={'Kamel Background'} style={{width:"100%"}}/>
+        <PackagesSection />
+        <SocialMediaPackages />
         <Footer />
       </div>
     </ThemeProvider>
