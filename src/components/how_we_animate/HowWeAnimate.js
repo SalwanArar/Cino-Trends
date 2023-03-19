@@ -9,7 +9,7 @@ import gif4 from './assets/voiceover.gif';
 import gif5 from './assets/animation.gif';
 import gif6 from './assets/delivery.gif';
 import { ChevronLeft, ChevronRight } from "@mui/icons-material";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 const gifs = [
     gif1,
@@ -122,12 +122,14 @@ function Carousel({
     const [curr, setCurr] = useState(0);
 
     const prev = () => setCurr((curr) => curr === 0 ? slides.length - 1: curr - 1);
-    const next = () => setCurr((curr) => curr === slides.length - 1 ? 0: curr + 1);
-
+    const next = useCallback(() => {
+        setCurr(curr => (curr === slides.length - 1 ? 0 : curr + 1));
+      }, [slides.length]);
+      
     useEffect(() => {
         const slideInterval = setInterval(next, autoSlideInterval);
         return () => clearInterval(slideInterval);
-    }, []);
+    }, [next, autoSlideInterval]);
     return (
         <div
         style={{
@@ -196,7 +198,6 @@ function HowWeAnimate() {
                         maxWidth: '1000px',
                         marginTop: '48px' ,
                         overflow: 'hidden',
-                        // position: 'relative',
                     }}>
                         <Grid container >
                             {gifs.map((gif, index) => (
@@ -211,7 +212,11 @@ function HowWeAnimate() {
             <br/>
             <br/>
             <Typography
-            variant={ 'h4' } component={ 'h4' } align={'center'}>
+            variant={ 'h4' }
+            component={ 'h4' }
+            maxWidth={ '1600px' }
+            align={ 'center' }
+            >
                 We ask the client to fill out questionnaire and provide us with the details needed to proceed with the project. then we will call you for clarifications of details and discuss the terms and conditions.
             </Typography>
         </Box>

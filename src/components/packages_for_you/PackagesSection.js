@@ -1,6 +1,6 @@
 import { ChevronLeft, ChevronRight } from "@mui/icons-material";
 import { Typography, Box, Button, useTheme, useMediaQuery, IconButton } from "@mui/material";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Wave from './wave.png';
 
 function ResponsiveBox({title, price, children}) {
@@ -154,12 +154,14 @@ function Carousel({
     const [curr, setCurr] = useState(0);
 
     const prev = () => setCurr((curr) => curr === 0 ? slides.length - 1: curr - 1);
-    const next = () => setCurr((curr) => curr === slides.length - 1 ? 0: curr + 1);
-
+    const next = useCallback(() => {
+        setCurr(curr => (curr === slides.length - 1 ? 0 : curr + 1));
+      }, [slides.length]);
+      
     useEffect(() => {
         const slideInterval = setInterval(next, autoSlideInterval);
         return () => clearInterval(slideInterval);
-    }, []);
+    }, [next, autoSlideInterval]);
     return (
         <div
         style={{
@@ -243,8 +245,10 @@ function PackagesSection () {
                 Packages Selected By Budget
             </Typography>
             <Typography 
-            variant='caption'
-            component='caption'
+            variant={ 'caption' }
+            component={ 'p' }
+            maxWidth={ '1600px' }
+            align={ 'center' }
             sx={{ fontSize: '2rem' }}>
                 We love contributing to the industry with compelling conceptual designs that rock up the market. Influencing is what we do best and we are happy to provide our pocket-friendly design packages to every customer
             </Typography>

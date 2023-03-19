@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid, Link, Typography } from '@mui/material';
-import { FacebookRounded, LinkedIn, Twitter, YouTube } from '@mui/icons-material';
+import { FacebookRounded, LinkedIn, Phone, Smartphone, Twitter, YouTube } from '@mui/icons-material';
 import { Box } from '@mui/system';
 
 
@@ -17,24 +17,38 @@ function Footer () {
                     flexDirection: 'column',
                     alignItems: 'center'
                 }}>
-                <Typography variant='h4'>
-                    CONTACT US
-                </Typography>
-                <Link
-                href='mailto:cinotrends@gmail.com'
-                underline='hover'
-                sx={{ fontSize: '1.1rem'}}>
-                    cinotrends@gmail.com
-                </Link>
-                <br />
-                <br />
-                <Typography variant='h4'>OFFICE</Typography>
-                <Link
-                href='tel:00971507355523'
-                underline='hover'
-                sx={{ fontSize: '1.1rem' }}>
-                    +971 50 735 5523
-                </Link>
+                    <Typography variant='h4'>
+                        CONTACT US
+                    </Typography>
+                    <Link
+                    href='mailto:info@cinotrends.com'
+                    underline='hover'
+                    sx={{ fontSize: '1.1rem'}}>
+                        {'info@cinotrends.ae'}
+                    </Link>
+                    <br />
+                    <br />
+                    <Typography variant='h4'>OFFICE</Typography>
+                    <Box sx={{ marginTop: '10px' }}>
+                        <Box sx={{ display: 'flex', alignItems:'center' , marginBottom: '4px'}}>
+                            <Smartphone sx={{ marginRight: '4px', color: '#6DC3BD' }}/>
+                            <Link
+                            href='tel:00971507790842'
+                            underline='hover'
+                            sx={{ fontSize: '1.1rem'}}>
+                                { '+971 50 779 0842' }
+                            </Link>
+                        </Box>
+                        <Box sx={{ display: 'flex', alignItems:'center' }}>
+                            <Phone sx={{ marginRight: '4px', color: '#6DC3BD' }}/>
+                            <Link
+                            href='tel:0097126355911'
+                            underline='hover'
+                            sx={{ fontSize: '1.1rem' }}>
+                                { '+971 02 635 5911' }
+                            </Link>
+                        </Box>
+                    </Box>
                 </Box>
             </Grid>
             <Grid xs={12} sm={4}>

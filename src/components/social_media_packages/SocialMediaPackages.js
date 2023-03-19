@@ -46,10 +46,8 @@ function CustomCard({ title, items, buttonBgColor, index }) {
                     variant='caption'
                     component='p'
                     sx={{
-                        // backgroundColor: index % 2 === 0 ? "#f0f0f0" : "transparent",
                         fontSize: '1.5rem',
                         fontWeight: '600',
-                        // p: '1rem',
                         color: 'rgba(109, 195, 189, 1)'
                     }}
                     >
@@ -133,6 +131,8 @@ function SocialMediaPackages () {
             <Typography 
             variant='caption'
             component='caption'
+            maxWidth={ '1600px' }
+            align={ 'center' }
             sx={{ fontSize: '2rem' }}>
                 We like to serve the industry with persuasive and conceptual design that rock the market. Creating an impacts is what we do best and what we ike to provide to every client with our pocket-friendly design pancakes.
             </Typography>
