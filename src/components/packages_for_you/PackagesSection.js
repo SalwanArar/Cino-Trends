@@ -1,6 +1,7 @@
 import { ChevronLeft, ChevronRight } from "@mui/icons-material";
 import { Typography, Box, Button, useTheme, useMediaQuery, IconButton } from "@mui/material";
 import { useEffect, useState } from "react";
+import Wave from './wave.png';
 
 function ResponsiveBox({title, price, children}) {
     const theme = useTheme();
@@ -58,6 +59,7 @@ function ResponsiveBox({title, price, children}) {
                     {price + ' AED'}
                 </Typography>
             </Box>
+            <img src={Wave} alt='wave' width={'100%'}/>
             <Box
             sx={{
                 display: 'flex',

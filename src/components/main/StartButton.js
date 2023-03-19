@@ -55,18 +55,26 @@ const handleToClose = () => {
 return (
 	<div>
         <Button variant="contained"
-                onClick={handleClickToOpen}>
+                onClick={handleClickToOpen}
+                style={{
+                    color: 'white'
+                }}
+                sx={{
+                    background: 'linear-gradient(90deg, #26558B 0%, #6DC3BD 100%)',
+                    color: 'white',
+                    fontSize: '1.5rem',
+                    fontWeight: 'bold',
+                    borderRadius: '28px',
+                    paddingInline: '4rem',
+                }}>
             GET STARTED
         </Button>
         <Dialog
             open={open}
             onClose={handleToClose}
             keepMounted
-            // style={{}}
-            // TransitionComponent={Transition}
             aria-describedby="dialog for get start our services"
             sx={{
-                // backgroundColor: 'red',
                 '& .MuiDialog-paper': {
                     background: '#6DC3BD'
                 }
@@ -83,67 +91,6 @@ return (
                 {"WANT TO GET STARTED?"}
             </DialogTitle>
             <DialogContent>
-            {/* <CssTextField
-                margin="dense"
-                id="name"
-                label="Full Name"
-                type="none"
-                fullWidth
-                required
-                // variant="outlined"
-            />
-            <TextField
-                margin="dense"
-                InputProps={{
-                    maxLength: 10,
-                    style: {
-                        fontSize: '2rem',
-                        background: 'white',
-                        color: 'black',
-                    },
-                    maxRows: 5
-                }}
-                InputLabelProps={{
-                    style: {
-                        fontSize: '2rem',
-                        color: '#000',
-                        fontWeight: 'bold'
-                    }
-                }}
-                maxLength= {256}
-                id= "contact"
-                label= "Contact Numbere"
-                type= "phoneNumber"
-                color= "primary"
-                fullWidth
-                required
-                // InputLabelProps={'font-size'= '16rem'}
-                variant="outlined"
-            />
-            <TextField
-                margin="dense"
-                id="email"
-                label="Email"
-                type="email"
-                size="medium"
-                color="secondary"
-                fullWidth
-                required
-                variant="outlined"
-            />
-            <TextField
-                margin="dense"
-                id="brief"
-                label="Brief"
-                type="text"
-                color="white"
-                fullWidth
-                required
-                variant="standard"
-                // maxRows= {4}
-                // minRows= {4}
-                // maxLength= {255}
-            /> */}
             {customTextField('Test')}
             {customTextField('Test')}
             {customTextField('Test')}
@@ -151,11 +98,20 @@ return (
             </DialogContent>
             <DialogActions>
                 <Button
-                        aria-label="closess"
+                        aria-label="closes"
                         onClick={handleToClose}
                         variant="contained"
-                        color="secondary"
                         autoFocus
+                        style={{
+                            color: 'white'
+                        }}
+                        sx={{
+                            background: 'linear-gradient(90deg, #26558B 0%, #6DC3BD 100%)',
+                            fontSize: '1.5rem',
+                            fontWeight: 'bold',
+                            borderRadius: '28px',
+                            paddingInline: '4rem',
+                        }}
                         >
                     Close
                 </Button>
