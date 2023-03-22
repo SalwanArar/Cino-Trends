@@ -73,9 +73,9 @@ function ResponsiveBox({title, price, children}) {
             }}
             >
                 <Typography variant="subtitle1" sx={{ color: '#6DC3BD', fontSize: '2rem' }}>
-                    <span style={{color: 'red', fontSize: '2rem' }}>
+                    <Typography variant="span" sx={{color: 'red', fontSize: '2rem' }}>
                         60 
-                    </span> Seconds Duration
+                    </Typography> Seconds Duration
                 </Typography>
                 <Box sx={{ width: '100%', maxHeight: '200px', m: '2rem 0' }}>
                 {
