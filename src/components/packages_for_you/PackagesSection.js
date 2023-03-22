@@ -77,7 +77,7 @@ function ResponsiveBox({title, price, children}) {
                         60 
                     </Typography> Seconds Duration
                 </Typography>
-                <Box sx={{ width: '100%', maxHeight: '200px', m: '2rem 0' }}>
+                <Box sx={{ width: '100%', m: '2rem 0' }}>
                 {
                     children.map((item, index)=> (
                         <Typography
