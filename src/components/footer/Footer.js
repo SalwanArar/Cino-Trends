@@ -23,7 +23,7 @@ function Footer () {
                     <Link
                     href='mailto:info@cinotrends.com'
                     underline='hover'
-                    sx={{ fontSize: '1.1rem'}}>
+                    sx={{ fontSize: '1.1rem', color: '#6DC3BD' }}>
                         {'info@cinotrends.ae'}
                     </Link>
                     <br />
@@ -35,7 +35,7 @@ function Footer () {
                             <Link
                             href='tel:00971507790842'
                             underline='hover'
-                            sx={{ fontSize: '1.1rem'}}>
+                            sx={{ fontSize: '1.1rem', color: '#6DC3BD' }}>
                                 { '+971 50 779 0842' }
                             </Link>
                         </Box>
@@ -44,7 +44,7 @@ function Footer () {
                             <Link
                             href='tel:0097126355911'
                             underline='hover'
-                            sx={{ fontSize: '1.1rem' }}>
+                            sx={{ fontSize: '1.1rem', color: '#6DC3BD'  }}>
                                 { '+971 02 635 5911' }
                             </Link>
                         </Box>
@@ -62,19 +62,19 @@ function Footer () {
                 sx={{textAlign: 'center'}}>
                     <Link
                     href='#Facebook'>
-                        <FacebookRounded sx={{ fontSize: '3rem' }}/>
+                        <FacebookRounded sx={{ fontSize: '3rem', color: '#6DC3BD'  }}/>
                     </Link>
                     <Link
                     href='#Youtube'>
-                        <YouTube sx={{ fontSize: '3rem' }}/>
+                        <YouTube sx={{ fontSize: '3rem', color: '#6DC3BD'  }}/>
                     </Link>
                     <Link
                     href='#Twitter'>
-                        <Twitter sx={{ fontSize: '3rem' }}/>
+                        <Twitter sx={{ fontSize: '3rem', color: '#6DC3BD'  }}/>
                     </Link>
                     <Link
                     href='#LinkedIn'>
-                        <LinkedIn sx={{ fontSize: '3rem' }}/>
+                        <LinkedIn sx={{ fontSize: '3rem', color: '#6DC3BD'  }}/>
                     </Link>
                 </Grid>
             </Grid>
@@ -88,7 +88,7 @@ function Footer () {
                 href='https://goo.gl/maps/CBdWs5ymjuT8X45F8'
                 target="_blank"
                 underline='hover'
-                sx={{ fontSize: '1.1rem' }}>
+                sx={{ fontSize: '1.1rem', color: '#6DC3BD' }}>
                     Cino Trends FZ LLC<br />
                     Cornich View Tower, Office 101,<br />
                     Al Markaziyah West, Abu Dhabi, UAE

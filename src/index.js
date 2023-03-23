@@ -7,12 +7,17 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import AboutUs from './routes/about_us/AboutUs';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
   },
+  {
+    path: "/aboutus",
+    element: <AboutUs />
+  }
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

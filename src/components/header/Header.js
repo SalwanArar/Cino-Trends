@@ -2,6 +2,7 @@ import logo from '../../assets/images/logo.png';
 import button from '../../assets/images/play-button.png';
 import './Header.css';
 import React, { useState, useRef } from "react";
+import { Link } from 'react-router-dom';
 // import React, { useState } from 'react';
 
 function Header() {
@@ -23,18 +24,18 @@ function Header() {
             </div>
             <nav className={`header-nav ${expanded ? 'expanded': ''}`}>
                 <ol className={`header-links ${expanded ? 'expanded': ''}`}>
-                    <li><a href='#heade'>HOME</a></li>
-                    <li><a href='#portfolio'>OUR PORTFOLIO</a></li>
-                    <li><a href='#3'>WHY US</a></li>
+                    <li><Link to='/'>HOME</Link></li>
+                    <li><Link to='#portfolio'>OUR PORTFOLIO</Link></li>
+                    <li><Link to='#3'>WHY US</Link></li>
                     <li>
                         <input
                         type='image'
                         src={button}
                         alt='play button'
                         onClick={toggleExpand}/></li>
-                    <li><a href='#4'>ABOUT US</a></li>
-                    <li><a href='#5'>OUR SERVICES</a></li>
-                    <li><a href='#6'>CONTACT</a></li>
+                    <li><Link to='/aboutus'>ABOUT US</Link></li>
+                    <li><Link to='#5'>OUR SERVICES</Link></li>
+                    <li><Link to='#6'>CONTACT</Link></li>
                 </ol>
             </nav>
         </header>
