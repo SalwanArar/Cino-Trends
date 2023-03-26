@@ -110,6 +110,7 @@ function AboutUs () {
             ]
         }
     ];
+
     return (
         <Box
         component={ 'div' }
@@ -118,7 +119,13 @@ function AboutUs () {
             color: 'white',
         }}>
             <Header />
-            { components.map((component) => <AboutUsComponent title={component.title} items={component.items} icon={component.icon}/>) }
+            <Box sx={{paddingInline: '10rem', maxWidth: '1200'}}>
+                {
+                    components.map((component) =>
+                        <AboutUsComponent title={component.title} items={component.items} icon={component.icon}/>
+                    )
+                }
+            </Box>
             <Footer />
         </Box>
     );
