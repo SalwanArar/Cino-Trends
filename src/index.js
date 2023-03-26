@@ -8,6 +8,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import AboutUs from './routes/about_us/AboutUs';
+import OurPortfolio from './routes/our_portfolio/OurPortfolio';
 
 const router = createBrowserRouter([
   {
@@ -17,7 +18,11 @@ const router = createBrowserRouter([
   {
     path: "/aboutus",
     element: <AboutUs />
-  }
+  },
+  {
+    path: "/portfolio",
+    element: <OurPortfolio />
+  },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
